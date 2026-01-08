@@ -1,0 +1,92 @@
+{
+  "name": "YOUTUBE",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        -80
+      ],
+      "id": "4eab9942-8162-4525-a881-b8f3b0f58701",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "fileSelector": "\"C:\\Users\\veera\\Desktop\\Images\\test.mp4\"",
+        "options": {
+          "dataPropertyName": "data"
+        }
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        144,
+        -80
+      ],
+      "id": "f3a4170e-e3e4-4fc3-b095-7abbb3351cc6",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "upload",
+        "title": "test-upload-001",
+        "regionCode": "IN",
+        "categoryId": "22",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        352,
+        -80
+      ],
+      "id": "9488a1f0-b1a0-4588-a5f3-3deb15a403e4",
+      "name": "Upload a video",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "Atm7tbLWSJ1mzj4C",
+          "name": "YouTube account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Upload a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c5ce65bf-dd2b-4f1f-a401-ac0aac13d354",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e3d4d7a71447ab9d26d6bfc5b3b96c4dffa103cc7d294827292cabce873ace1a"
+  },
+  "id": "9ljy8Wjg6WZ65KGW",
+  "tags": []
+}
